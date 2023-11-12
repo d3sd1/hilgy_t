@@ -32,7 +32,7 @@ public class LibraryController {
         return new ResponseEntity<>(libraryService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/book/{id}")
     public ResponseEntity<Book> getById(@PathVariable("id") long id) throws BookNotFoundException {
         return new ResponseEntity<>(libraryService.getById(id), HttpStatus.OK);
     }
@@ -53,7 +53,7 @@ public class LibraryController {
         return new ResponseEntity<>(libraryService.add(bookMapper.bookDTOToBook(bookDTO)), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/book/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable("id") long id) throws BookLendException, BookNotFoundException {
         libraryService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
